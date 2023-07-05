@@ -1,0 +1,32 @@
+[
+    {
+      "id": 0,
+      "imageUrl": "https://appetitfood.ru/img/products/490/soevyy.jpg",
+      "title": "Соевой соус",
+      "price": 15
+    },
+    {
+      "id": 1,
+      "imageUrl": "https://appetitfood.ru/img/storage/490/bbq.jpg",
+      "title": "Соус Барбекью",
+      "price": 25
+    },
+    {
+      "id": 2,
+      "imageUrl": "https://appetitfood.ru/img/products/kzn/490/1568.jpg",
+      "title": "Кисло-сладкий соус",
+      "price": 25
+    },
+    {
+      "id": 3,
+      "imageUrl": "https://appetitfood.ru/img/products/kzn/490/1569.jpg",
+      "title": "Сырный соус",
+      "price": 25
+    },
+    {
+      "id": 5,
+      "imageUrl": "https://appetitfood.ru/img/products/kzn/490/2509.jpg",
+      "title": "Чесночный соус",
+      "price": 25
+    }
+]
