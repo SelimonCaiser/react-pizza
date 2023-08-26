@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.banner {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 18px;
+  -webkit-box-shadow: 4px 4px 22px 8px rgba(238, 152, 209, 0.2);
+  -moz-box-shadow: 4px 4px 22px 8px rgba(238, 152, 209, 0.2);
+  box-shadow: 4px 4px 22px 8px rgba(238, 152, 209, 0.2);
+  margin-bottom: 18px;
+  &__image {
+    width: 100%;
+    border-radius: 17px;
+    height: 300px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+}

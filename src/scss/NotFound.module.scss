@@ -1,14 +1,21 @@
 .root {
   padding: 100px;
   text-align: center;
-
+  background: #FCB82F;
 }
 .h2 {
-    font-size: 60px;
-    font-weight: bold;
+  font-size: 60px;
+  font-weight: bold;
 }
 
 .description {
-    font-size: 18px;
-    color: gray;
+  font-size: 18px;
+  color: gray;
+}
+
+.image {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
 }

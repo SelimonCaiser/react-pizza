@@ -1,20 +1,40 @@
 .root {
   position: relative;
-  left: 120px;
 }
 
 .input {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid red;
   padding: 12px 20px;
   padding-left: 42px;
   margin-top: 15px;
   background: #ffffff;
-  width: 400px;
+  transform: scale3d(1, 1);
+  width: 1250px;
+  align-items: center;
   border-radius: 10px;
   font-size: 16px;
 
   &:focus {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid rgb(255, 72, 0);
+  }
+
+  @media (max-width: 1400px) {
+    width: 1000px;
+  }
+
+  @media (max-width: 1200px) {
+    width: 800px;
+  }
+
+  @media (max-width: 1000px) {
+    width: 600px;
+  }
+
+  @media (max-width: 800px) {
+    width: 400px;
+  }
+  @media (max-width: 600px) {
+    width: 200px;
   }
 }
 

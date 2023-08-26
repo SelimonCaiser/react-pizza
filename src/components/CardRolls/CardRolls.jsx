@@ -1,9 +1,23 @@
-import React, { useState }  from "react";
-import '../../scss/CartDrinks.scss'
-const CardRolls = ({ title, price, imageUrl}) => {
-  const [rolls, setRolls] = useState(0);
-  const addCount = () => {
-    setRolls(rolls + 1);
+import React, { useState } from "react";
+import "../../scss/CartDrinks.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { addProducts } from "../../redux/slices/cartSlice";
+const CardRolls = ({ id, title, price, imageUrl }) => {
+  // Redux
+  const cartItem = useSelector((state) =>
+    state.cartSlice.items.find((obj) => obj.id === id)
+  );
+
+  const addedProductInCart = cartItem ? cartItem.count : 0;
+  const dispath = useDispatch();
+  const onClickAddProductInCart = () => {
+    const item = {
+      id: id,
+      price: price,
+      title: title,
+      imageUrl: imageUrl,
+    };
+    dispath(addProducts(item));
   };
 
   return (
@@ -15,7 +29,10 @@ const CardRolls = ({ title, price, imageUrl}) => {
           <div class="pizza-block__price">
             <b>{price} руб.</b>
           </div>
-          <button onClick={addCount} class="button button--outline button--add">
+          <button
+            onClick={onClickAddProductInCart}
+            class="button button--outline button--add"
+          >
             <svg
               width="12"
               height="12"
@@ -29,7 +46,7 @@ const CardRolls = ({ title, price, imageUrl}) => {
               />
             </svg>
             <span>Добавить</span>
-            <i>{rolls}</i>
+            {addedProductInCart > 0 && <i>{addedProductInCart}</i>}
           </button>
         </div>
       </div>

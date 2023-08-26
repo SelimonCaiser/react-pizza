@@ -5,10 +5,10 @@ import NotFound from "./pages/NotFound";
 import Cart from "./components/CardPizza/Cart";
 import Pizzas from "./components/CardPizza/Pizzas";
 import Drinks from "./components/CartDrinks/Drinks";
-import Souses from "./components/CardSouses/Souses";
 import Zakuski from "./components/CardZakuski/Zakuski";
 import Rolls from "./components/CardRolls/Rolls";
 import React, { useState } from "react";
+import CartEmpty from "./components/CardPizza/CartEmpty";
 
 export const SearchContext = React.createContext("");
 
@@ -26,11 +26,11 @@ function App() {
           <div class="content">
             <div class="container">
               <Routes>
+                <Route path="/cartEmpty" element={<CartEmpty />} />
                 <Route path="*" element={<NotFound />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/drinks" element={<Drinks />} />
                 <Route path="/pizzas" element={<Pizzas />} />
-                <Route path="/souses" element={<Souses />} />
                 <Route path="/rolls" element={<Rolls />} />
                 <Route path="/zakuski" element={<Zakuski />} />
               </Routes>

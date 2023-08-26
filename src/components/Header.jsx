@@ -1,41 +1,39 @@
-import React, { useEffect, useState } from "react";
-import LOGO from "../img/logo.png";
-import { Link, useLocation } from "react-router-dom";
-import DRINKS from "../img/drinks.jpg";
-import PIZZAS from "../img/background.png";
-import { Search } from "./Search/Search";
+import React from "react";
+import TWO_LOGO from "../img/Vector.png";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  // Redux
+  const { items, totalPrice } = useSelector((state) => state.cartSlice);
+  const totalPriceElse = items.reduce((sum, item) => sum + item.count, 0);
   return (
     <div class="header">
       <div class="container">
         <div class="header__logo">
-          <img width="70" src={LOGO} alt="Pizza logo" />
-          <Link to="/">
+          <img
+            className="img"
+            width="35"
+            height={"35"}
+            src={TWO_LOGO}
+            alt="Pizza logo"
+          />
+          <Link>
             <h1>React Магазин</h1>
             <p>Самые вкусные товары только у нас</p>
           </Link>
         </div>
         <div className="menu">
           <ul>
-            <Link className="link__products" to="/about">
-              Про нас
-            </Link>
             <Link className="link__products" to="/pizzas">
               Пиццы
             </Link>
             <Link className="link__products" to="/drinks">
               Напитки
             </Link>
-            <Link className="link__products" to="/souses">
-              Соусы
-            </Link>
             <Link className="link__products" to="/rolls">
               Роллы
             </Link>
-            {/* <Link className="link__products" to="/deserts">
-              Десерты
-            </Link> */}
             <Link className="link__products" to="/zakuski">
               Закуски
             </Link>
@@ -43,7 +41,7 @@ const Header = () => {
         </div>
         <div class="header__cart">
           <Link to="/cart" class="button button--cart">
-            <span>520 ₽</span>
+            <span>{totalPrice} ₽.</span>
             <div class="button__delimiter"></div>
             <svg
               width="18"
@@ -74,7 +72,7 @@ const Header = () => {
                 stroke-linejoin="round"
               />
             </svg>
-            <span>3</span>
+            <span>{totalPriceElse}</span>
           </Link>
         </div>
       </div>

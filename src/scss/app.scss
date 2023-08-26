@@ -8,6 +8,7 @@ body {
   font-family: "Playfair Display", serif;
 }
 
+
 .image.pizzas {
   background-image: url("../img/background.png");
   height: 100%;
@@ -48,13 +49,11 @@ body {
   display: flex;
 }
 
-
 .image.cart {
   background-image: url("../img/card.jpg");
   transition: 1s all ease-in-out;
   display: flex;
 }
-
 
 .desc {
   margin-top: 7px;

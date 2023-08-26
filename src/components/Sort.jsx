@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSort } from "../redux/slices/filterSlice";
 
+export const list = [
+  { name: "популярности(по убыванию)", sort: "rating" },
+  { name: "популярности(по возрастанию)", sort: "-rating" },
+  { name: "цене(по убыванию)", sort: "price" },
+  { name: "цене(по возрастанию)", sort: "-price" },
+  { name: "алфавиту(по убыванию)", sort: "title" },
+  { name: "алфавиту(по возрастанию)", sort: "-title" },
+];
+
 const Sort = () => {
+  const sortRef = useRef();
+  React.useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!sortRef.current.contains(e.target)) {
+        setOpen();
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
   const dispatch = useDispatch();
   const sort = useSelector((state) => state.filterSlice.sort);
-  const list = [
-    { name: "популярности(по убыванию)", sort: "rating" },
-    { name: "популярности(по возрастанию)", sort: "-rating" },
-    { name: "цене(по убыванию)", sort: "price" },
-    { name: "цене(по возрастанию)", sort: "-price" },
-    { name: "алфавиту(по убыванию)", sort: "title" },
-    { name: "алфавиту(по возрастанию)", sort: "-title" },
-  ];
   const [open, setOpen] = useState(false);
 
   const onClickListItem = (obj) => {
@@ -20,7 +32,7 @@ const Sort = () => {
     setOpen(false);
   };
   return (
-    <div class="sort">
+    <div ref={sortRef} class="sort">
       <div class="sort__label">
         <svg
           width="10"

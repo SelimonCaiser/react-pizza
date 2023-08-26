@@ -54,7 +54,7 @@
   }
 
   &--outline {
-    background-color: #fff;
+  background: transparent;
     border-color: $orange;
     &,
     span {
@@ -131,6 +131,7 @@
 
   &--cart {
     display: flex;
+    background: #c4980a;
     align-items: center;
     line-height: 23px;
     padding: 12px 25px;

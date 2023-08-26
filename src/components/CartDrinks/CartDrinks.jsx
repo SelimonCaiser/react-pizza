@@ -1,20 +1,29 @@
 import React, { useState } from "react";
 import "../../scss/CartDrinks.scss";
-import { useLocation } from "react-router-dom";
-const CardDrinks = ({ title, price, imageUrl, types, desc }) => {
-  const [drink, setDrink] = useState(0);
+import { useDispatch, useSelector } from "react-redux";
+import { addProducts } from "../../redux/slices/cartSlice";
+
+const CardDrinks = ({ id, title, price, imageUrl, types, desc }) => {
+  // Redux
+  const [activeType, setActiveTypes] = useState(0);
   const [activeSizes, setActiveSizes] = useState(0);
-  const addCount = () => {
-    setDrink(drink + 1);
+  const cartItem = useSelector((state) =>
+    state.cartSlice.items.find((obj) => obj.id === id)
+  );
+
+  const addedProductInCart = cartItem ? cartItem.count : 0;
+  const dispath = useDispatch();
+  const onClickAddProductInCart = () => {
+    const item = {
+      id: id,
+      price: price,
+      title: title,
+      types: types[activeType],
+      imageUrl: imageUrl,
+    };
+    dispath(addProducts(item));
   };
-  // const category = [
-  //   "Все",
-  //   "Напитки",
-  //   "Морс",
-  //   "Вода",
-  //   "Соки",
-  //   "Кофе"
-  // ]
+
   return (
     <div>
       <div className="pizza-block__wrapper wrapper_drinks drinks">
@@ -42,7 +51,7 @@ const CardDrinks = ({ title, price, imageUrl, types, desc }) => {
               <b>{price} руб.</b>
             </div>
             <button
-              onClick={addCount}
+              onClick={onClickAddProductInCart}
               class="button button--outline button--add"
             >
               <svg
@@ -58,7 +67,7 @@ const CardDrinks = ({ title, price, imageUrl, types, desc }) => {
                 />
               </svg>
               <span>Добавить</span>
-              <i>{drink}</i>
+              {addedProductInCart > 0 && <i>{addedProductInCart}</i>}
             </button>
           </div>
         </div>
